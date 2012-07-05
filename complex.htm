@@ -75,7 +75,7 @@
         </div>
         <a href="index.htm">Simple example</a>
         
-        <script type="text/javascript" src="js/ef.utils.preload.min.js"></script>
+        <script type="text/javascript" src="js/ef.utils.preload.js"></script>
         <script type="text/javascript">
         /**
          *  You can add multiple groups of images to preload and preload them seperatly
@@ -90,11 +90,10 @@
         // To preload a group, call the "run" function passing the group-name as parameter, if you pass 'all' as parameter, it will preload all the groups, except the simple images (added without group name)
         ef.utils.preload.run('set1');
         
-        // I use a function just to write out that preloading has been completed, the code above this line is not needed
+        // Example function that runs preload
         function preload2() {
-            ef.utils.preload.run('set2');
-            var txtNode = document.createTextNode('Preloading done.');
-            document.getElementById('preloadNow').appendChild(txtNode);
+            // As second parameter you can specify a callback function if you want
+            ef.utils.preload.run('set2', function(){alert('Preloading done');});
         }
         
         function rollover(id, path) {

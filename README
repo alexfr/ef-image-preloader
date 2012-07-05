@@ -29,7 +29,9 @@ ef.utils.preload.add(['path2/img3.jpg', 'path2/img4.jpg'], 'set2');
 // Preload the first image-set
 ef.utils.preload.run('set1');
 
-// How it would look like when preloading the second image-set on a click event using jQuery
+// How it would look like when preloading the second image-set on a click event using jQuery, as second parameter, you can also specify a callback function that will be called after loading the images
 $('#preload').on('click', function() {
-    ef.utils.preload.run('set2');
+    ef.utils.preload.run('set2', function() {
+        alert('Loaded..');
+    });
 });

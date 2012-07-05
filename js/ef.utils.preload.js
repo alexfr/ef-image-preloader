@@ -39,7 +39,7 @@ ef.utils.preload = {
         }
     },
     
-    run: function(group) {
+    run: function(group, callback) {
         var hub = null;
         var img = new Image();
         
@@ -50,6 +50,11 @@ ef.utils.preload = {
                         img.src = this.groups[i][j];
                     }
                 }
+                
+                if (callback && typeof(callback) === "function") {
+                    callback();
+                }
+                
                 return true;
             } else if(typeof(this.groups[group]) == 'undefined') {
                 return false;
@@ -62,6 +67,10 @@ ef.utils.preload = {
             
         for(i=0;i<hub.length;i++) {
             img.src = hub[i];
+        }
+        
+        if (callback && typeof(callback) === "function") {
+            callback();
         }
         
         return true;
