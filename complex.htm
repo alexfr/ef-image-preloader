@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lightweight Image Preloader</title>
+        <style type="text/css">
+        html,
+        body
+        {
+            padding: 0;
+            font-family: Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        #rollover1 div,
+        #rollover2 div
+        {
+            width: 400px;
+            height: 300px;
+            padding: 20px;
+            color: white;
+            margin-right: 20px;
+            display: inline-block;
+        }
+        
+        #rollover1-1
+        {
+            background: url('img/bg1-1.jpg') no-repeat top left;
+        }
+        
+        
+        #rollover1-2
+        {
+            background: url('img/bg1-3.jpg') no-repeat top left;
+        }
+        
+        
+        #rollover2-1
+        {
+            background: url('img/bg2-1.jpg') no-repeat top left;
+        }
+        
+        
+        #rollover2-2
+        {
+            background: url('img/bg2-3.jpg') no-repeat top left;
+        }
+        
+        #preloadNow
+        {
+            cursor: pointer;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Lightweight Image preloader</h1>
+        <h2>Set 1 of images (automatically preloaded)</h2>
+        <div id="rollover1">
+            <div id="rollover1-1" onmouseover="rollover('rollover1-1', 'img/bg1-2.jpg');" onmouseout="rollover('rollover1-1', 'img/bg1-1.jpg');">
+                Rollover me!
+            </div>
+            <div id="rollover1-2" onmouseover="rollover('rollover1-2', 'img/bg1-4.jpg');" onmouseout="rollover('rollover1-2', 'img/bg1-3.jpg');">
+                Rollover me!
+            </div>
+        </div>
+        <h2 id="preloadNow" onclick="javascript:preload2();">Image set 2 (click me to preload them)</h2>
+        <div id="rollover2">
+            <div id="rollover2-1" onmouseover="rollover('rollover2-1', 'img/bg2-2.jpg');" onmouseout="rollover('rollover2-1', 'img/bg2-1.jpg');">
+                Rollover me!
+            </div>
+            <div id="rollover2-2" onmouseover="rollover('rollover2-2', 'img/bg2-4.jpg');" onmouseout="rollover('rollover2-2', 'img/bg1-3.jpg');">
+                Rollover me!
+            </div>
+        </div>
+        <a href="index.htm">Simple example</a>
+        
+        <script type="text/javascript" src="js/ef.utils.preload.min.js"></script>
+        <script type="text/javascript">
+        /**
+         *  You can add multiple groups of images to preload and preload them seperatly
+         *  To accomplish this, call the "add" function for each group, as first parameter pass the
+         *  array containing the paths to the images and as second a name for the desired group
+         **/
+        ef.utils.preload.add(['img/bg1-2.jpg',
+                              'img/bg1-4.jpg'], 'set1');
+        ef.utils.preload.add(['img/bg2-2.jpg',
+                              'img/bg2-4.jpg'], 'set2');
+        
+        // To preload a group, call the "run" function passing the group-name as parameter, if you pass 'all' as parameter, it will preload all the groups, except the simple images (added without group name)
+        ef.utils.preload.run('set1');
+        
+        // I use a function just to write out that preloading has been completed, the code above this line is not needed
+        function preload2() {
+            ef.utils.preload.run('set2');
+            var txtNode = document.createTextNode('Preloading done.');
+            document.getElementById('preloadNow').appendChild(txtNode);
+        }
+        
+        function rollover(id, path) {
+            document.getElementById(id).style.backgroundImage = 'url("'+path+'")';
+        }
+        </script>
+    </body>
+</html>

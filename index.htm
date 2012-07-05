@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lightweight Image Preloader</title>
+        <style type="text/css">
+        html,
+        body
+        {
+            padding: 0;
+            font-family: Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        h1
+        {
+            color: #555;
+        }
+        
+        #rollover
+        {
+            width: 800px;
+            height: 600px;
+            background: url('img/bg1.jpg');
+        }
+        
+        #rollover:hover
+        {
+            background: url('img/bg2.jpg');
+        }
+        </style>
+        
+        <script type="text/javascript" src="js/ef.utils.preload.min.js"></script>
+        <script type="text/javascript">
+        // To preload images, simply call the "add" function, specifiying as array the urls to the images
+        ef.utils.preload.add(['img/bg2.jpg']);
+        
+        // The run function runs the actual preload, so you can also preload the images only when needed
+        ef.utils.preload.run();
+        </script>
+        
+    </head>
+    <body>
+        <h1>Lightweight Image preloader</h1>
+        <div id="rollover">
+            Rollover me!
+        </div>
+        <a href="complex.htm">A little more complex example</a>
+    </body>
+</html>

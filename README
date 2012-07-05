@@ -1,0 +1,35 @@
+ef Image-Preloader
+
+License: Gpl 3.0
+Author: Alex Franzelin 2012
+Requirements: None
+
+This Library is a standalone component to preload images.
+It cannot be used with the whole ef-library, if you want to do so, use that (maybe still not available as open source when you read this).
+There are no library requirements, really, you don't need jQuery, but it works with jQuery too, if you want.  =)
+
+The main purpose is to give the programmer a simple, but still flexible way to preload images.
+You can organize images into groups and preload them at specific events if you want to do so,
+but you can use the base functionality and preload them in just two lines of code.
+
+
+
+Simple Example:
+
+ef.utils.preload.add(['path/img1.jpg', 'path/img2.jpg]);
+ef.utils.preload.run();
+
+
+Example with Groups and custom preloading:
+
+// Add the two image sets
+ef.utils.preload.add(['path1/img1.jpg', 'path1/img2.jpg'], 'set1');
+ef.utils.preload.add(['path2/img3.jpg', 'path2/img4.jpg'], 'set2');
+
+// Preload the first image-set
+ef.utils.preload.run('set1');
+
+// How it would look like when preloading the second image-set on a click event using jQuery
+$('#preload').on('click', function() {
+    ef.utils.preload.run('set2');
+});
