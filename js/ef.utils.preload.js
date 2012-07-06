@@ -41,12 +41,12 @@ ef.utils.preload = {
     
     run: function(group, callback) {
         var hub = null;
-        var img = new Image();
         
         if(typeof(group) != 'undefined') {
             if(group == 'all') {
                 for(var i in this.groups) {
                     for(j=0;j<this.groups[i].length;j++) {
+                        var img = new Image();
                         img.src = this.groups[i][j];
                     }
                 }
