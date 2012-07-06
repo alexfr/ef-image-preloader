@@ -66,6 +66,7 @@ ef.utils.preload = {
         }
             
         for(i=0;i<hub.length;i++) {
+            var img = new Image();
             img.src = hub[i];
         }
         
